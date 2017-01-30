@@ -1,0 +1,24 @@
+{
+  "name": "diceware-again",
+  "version": "1.0.0",
+  "description": "Another implementation of the Diceware password generator.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "execute": "echo wat"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CraigPhillips/diceware-again.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CraigPhillips/diceware-again/issues"
+  },
+  "homepage": "https://github.com/CraigPhillips/diceware-again#readme",
+  "bin": {
+    "diceware-again": "./index.js"
+  }
+}
