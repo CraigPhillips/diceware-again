@@ -1,32 +1,7 @@
-var fileSystem = require("fs");
+var fileSystem = require("fs"),
+    wordList = require("./eff-word-list");
 
 module.exports = {
-    dictionary: {},
-
-    /**
-     * Initializes the dictionary used to generate passwords. Only done once
-     * to avoid lots of file reading in the event multiple passwords will be
-     * generated.
-     */
-    buildDictionary: function() {
-        var contents = fileSystem.readFileSync(
-            "eff-word-list.txt",
-            "utf8"),
-            pairs = contents.split("\n");
-
-        for(var i = 0; i<pairs.length; i++) {
-            var parts = pairs[i].split("\t");
-
-            if(parts.length<2) {
-                throw new Error(
-                    "Unable to build diceware dictionary." +
-                    "Bad word data on line " + (i+1));
-            }
-
-            this.dictionary[parts[0].trim()] = parts[1].trim();
-        }
-    },
-
     /**
      * Prints a generated password out to the command line.
      * 
@@ -52,14 +27,12 @@ module.exports = {
                 key += roll.toString();
             }
 
-            if(!this.dictionary[key])
+            if(!wordList[key])
                 throw new Error("Dictionary missing entry for key ", key);
 
-            words.push(this.dictionary[key]);
+            words.push(wordList[key]);
         }
 
         return words.join(separator);
     },
 };
-
-module.exports.buildDictionary();

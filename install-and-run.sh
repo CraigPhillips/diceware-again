@@ -1,5 +1,4 @@
-echo "Building..."
-npm install -g
+./install.sh
 echo
 
 echo "Running:"
